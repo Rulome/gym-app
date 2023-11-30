@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"com.app.gym.repository.model","c":"Muscle","l":"Muscle()","u":"%3Cinit%3E()"}];updateSearchResults();
