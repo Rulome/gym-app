@@ -1,5 +1,6 @@
 package com.app.gym.repository.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -31,6 +32,13 @@ public class Muscle {
 	/** The exercises. */
 	@ManyToMany(mappedBy = "muscles")
 	private Set<Exercise> exercises;
+
+	/**
+	 * Instantiates a new muscle.
+	 */
+	public Muscle() {
+		exercises = new HashSet<>();
+	}
 
 	/**
 	 * Instantiates a new muscle.

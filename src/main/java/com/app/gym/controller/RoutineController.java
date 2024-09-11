@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.gym.dto.RoutineDTO;
@@ -45,9 +46,10 @@ public class RoutineController {
 	}
 
 	@PutMapping(value = "/asign")
-	public ResponseEntity<Routine> asingRoutine(@RequestBody RoutineDTO routine) {
+	public ResponseEntity<Routine> asingRoutine(@RequestParam(required = true) Long routine,
+			@RequestParam(required = true) String client) {
 
-		return new ResponseEntity<>(service.save(routine), HttpStatus.OK);
+		return new ResponseEntity<>(service.asign(routine, client), HttpStatus.OK);
 	}
 
 }

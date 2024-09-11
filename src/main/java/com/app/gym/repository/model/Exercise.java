@@ -1,5 +1,6 @@
 package com.app.gym.repository.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -39,6 +40,14 @@ public class Exercise {
 	@ManyToMany
 	@JoinTable(name = "EXERCISE_MATERIALS", joinColumns = @JoinColumn(name = "exercise_id"), inverseJoinColumns = @JoinColumn(name = "material_id"))
 	private Set<Material> materials;
+
+	/**
+	 * Instantiates a new exercise.
+	 */
+	public Exercise() {
+		materials = new HashSet<>();
+		muscles = new HashSet<>();
+	}
 
 	/**
 	 * Instantiates a new exercise.

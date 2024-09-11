@@ -9,6 +9,6 @@ import com.app.gym.repository.model.Client;
  * The Interface ClientRepository.
  */
 @Repository
-public interface ClientRepository extends JpaRepository<Client, Long> {
+public interface ClientRepository extends JpaRepository<Client, String> {
 
 }

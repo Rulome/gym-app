@@ -2,6 +2,7 @@ package com.app.gym.repository.model;
 
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,13 +27,19 @@ public class Routine {
 	/** The name. */
 	private String name;
 
-	/** The client routines. */
-	@OneToMany(mappedBy = "routine")
+	/** The clients. */
+	@OneToMany(mappedBy = "routine", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	private Set<ClientRoutine> clients;
 
-	/** The exercise routines. */
+	/** The exercises. */
 	@OneToMany(mappedBy = "routine")
 	private Set<ExerciseRoutine> exercises;
+
+	/**
+	 * Instantiates a new routine.
+	 */
+	public Routine() {
+	}
 
 	/**
 	 * Instantiates a new routine.
@@ -81,6 +88,42 @@ public class Routine {
 	 */
 	public Set<ExerciseRoutine> getExerciseRoutines() {
 		return Set.copyOf(exercises);
+	}
+
+	/**
+	 * Sets the id.
+	 *
+	 * @param id the new id
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	/**
+	 * Sets the name.
+	 *
+	 * @param name the new name
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * Sets the clients.
+	 *
+	 * @param clients the new clients
+	 */
+	public void setClients(Set<ClientRoutine> clients) {
+		this.clients = clients;
+	}
+
+	/**
+	 * Sets the exercises.
+	 *
+	 * @param exercises the new exercises
+	 */
+	public void setExercises(Set<ExerciseRoutine> exercises) {
+		this.exercises = exercises;
 	}
 
 }

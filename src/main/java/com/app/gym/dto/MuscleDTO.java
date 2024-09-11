@@ -1,5 +1,6 @@
 package com.app.gym.dto;
 
+import java.util.Collections;
 import java.util.Set;
 
 import com.app.gym.repository.model.Exercise;
@@ -39,7 +40,7 @@ public class MuscleDTO {
 	 * @return the exercises
 	 */
 	public Set<Exercise> getExercises() {
-		return Set.copyOf(exercises);
+		return exercises == null ? Collections.emptySet() : Set.copyOf(exercises);
 	}
 
 	/**

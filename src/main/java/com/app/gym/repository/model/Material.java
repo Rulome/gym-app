@@ -3,6 +3,7 @@
  */
 package com.app.gym.repository.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -32,6 +33,13 @@ public class Material {
 	/** The exercises. */
 	@ManyToMany(mappedBy = "materials")
 	private Set<Exercise> exercises;
+
+	/**
+	 * Instantiates a new material.
+	 */
+	public Material() {
+		exercises = new HashSet<>();
+	}
 
 	/**
 	 * Instantiates a new material.

@@ -1,5 +1,6 @@
 package com.app.gym.dto;
 
+import java.util.Collections;
 import java.util.Set;
 
 import com.app.gym.repository.model.Material;
@@ -18,6 +19,19 @@ public class ExerciseDTO {
 
 	/** The materials. */
 	private Set<Material> materials;
+
+	/**
+	 * Instantiates a new exercise DTO.
+	 *
+	 * @param name      the name
+	 * @param muscles   the muscles
+	 * @param materials the materials
+	 */
+	public ExerciseDTO(String name, Set<Muscle> muscles, Set<Material> materials) {
+		this.name = name;
+		this.muscles = muscles;
+		this.materials = materials;
+	}
 
 	/**
 	 * Gets the name.
@@ -43,7 +57,7 @@ public class ExerciseDTO {
 	 * @return the muscles
 	 */
 	public Set<Muscle> getMuscles() {
-		return Set.copyOf(muscles);
+		return muscles == null ? Collections.emptySet() : Set.copyOf(muscles);
 	}
 
 	/**
@@ -61,7 +75,7 @@ public class ExerciseDTO {
 	 * @return the materials
 	 */
 	public Set<Material> getMaterials() {
-		return Set.copyOf(materials);
+		return materials == null ? Collections.emptySet() : Set.copyOf(materials);
 	}
 
 	/**

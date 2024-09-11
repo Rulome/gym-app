@@ -16,4 +16,13 @@ public interface RoutineService {
 	 */
 	Routine save(RoutineDTO routine);
 
+	/**
+	 * Asign.
+	 *
+	 * @param routine the routine
+	 * @param client  the client
+	 * @return the routine
+	 */
+	Routine asign(Long routine, String client);
+
 }

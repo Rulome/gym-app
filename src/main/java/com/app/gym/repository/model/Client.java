@@ -1,6 +1,8 @@
 package com.app.gym.repository.model;
 
-import java.util.Date;
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,7 +22,7 @@ public class Client {
 	/** The id. */
 	@Id
 	@Column(name = "client_id")
-	private Long id;
+	private String id;
 
 	/** The name. */
 	@Pattern(regexp = "[A-Za-z]+", message = "Name should be just characters")
@@ -31,8 +33,15 @@ public class Client {
 	private String email;
 
 	/** The dob. */
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Past(message = "Date of birth should be a date in the past")
-	private Date dob;
+	private LocalDate dob;
+
+	/**
+	 * Instantiates a new client.
+	 */
+	public Client() {
+	}
 
 	/**
 	 * Instantiates a new client.
@@ -42,9 +51,9 @@ public class Client {
 	 * @param email the email
 	 * @param dob   the dob
 	 */
-	public Client(Long id, @Pattern(regexp = "[A-Za-z]+", message = "Name should be just characters") String name,
+	public Client(String id, @Pattern(regexp = "[A-Za-z]+", message = "Name should be just characters") String name,
 			@Email(message = "Email should be valid") String email,
-			@Past(message = "Date of birth should be a date in the past") Date dob) {
+			@Past(message = "Date of birth should be a date in the past") LocalDate dob) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
@@ -56,7 +65,7 @@ public class Client {
 	 *
 	 * @return the id
 	 */
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -83,7 +92,7 @@ public class Client {
 	 *
 	 * @return the dob
 	 */
-	public Date getDob() {
+	public LocalDate getDob() {
 		return dob;
 	}
 

@@ -1,13 +1,12 @@
 package com.app.gym.repository.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
 
 /**
@@ -18,32 +17,57 @@ import jakarta.persistence.Table;
 public class ClientRoutine {
 
 	/** The id. */
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@EmbeddedId
+	private ClientRoutinePK id;
 
 	/** The ini. */
-	private Date ini;
+	private LocalDate ini;
 
 	/** The end. */
-	private Date end;
+	private LocalDate end;
 
 	/** The routine. */
 	@ManyToOne
 	@JoinColumn(name = "routine_id")
+	@MapsId("routineId")
 	private Routine routine;
 
-	/** The exercise. */
+	/** The client. */
 	@ManyToOne
 	@JoinColumn(name = "client_id")
+	@MapsId("clientId")
 	private Client client;
+
+	/**
+	 * Instantiates a new client routine.
+	 */
+	public ClientRoutine() {
+		// Empty constructor
+	}
+
+	/**
+	 * Instantiates a new client routine.
+	 *
+	 * @param id      the id
+	 * @param ini     the ini
+	 * @param end     the end
+	 * @param routine the routine
+	 * @param client  the client
+	 */
+	public ClientRoutine(ClientRoutinePK id, LocalDate ini, LocalDate end, Routine routine, Client client) {
+		this.id = id;
+		this.ini = ini;
+		this.end = end;
+		this.routine = routine;
+		this.client = client;
+	}
 
 	/**
 	 * Gets the id.
 	 *
 	 * @return the id
 	 */
-	public Long getId() {
+	public ClientRoutinePK getId() {
 		return id;
 	}
 
@@ -52,7 +76,7 @@ public class ClientRoutine {
 	 *
 	 * @return the ini
 	 */
-	public Date getIni() {
+	public LocalDate getIni() {
 		return ini;
 	}
 
@@ -61,7 +85,7 @@ public class ClientRoutine {
 	 *
 	 * @return the end
 	 */
-	public Date getEnd() {
+	public LocalDate getEnd() {
 		return end;
 	}
 

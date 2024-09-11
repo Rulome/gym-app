@@ -1,6 +1,6 @@
 package com.app.gym.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * The Class ClientDTO.
@@ -8,7 +8,7 @@ import java.util.Date;
 public class ClientDTO {
 
 	/** The id. */
-	private Long id;
+	private String id;
 
 	/** The name. */
 	private String name;
@@ -17,14 +17,29 @@ public class ClientDTO {
 	private String email;
 
 	/** The dob. */
-	private Date dob;
+	private LocalDate dob;
+
+	/**
+	 * Instantiates a new client DTO.
+	 *
+	 * @param id    the id
+	 * @param name  the name
+	 * @param email the email
+	 * @param dob   the dob
+	 */
+	public ClientDTO(String id, String name, String email, LocalDate dob) {
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.dob = dob;
+	}
 
 	/**
 	 * Gets the id.
 	 *
 	 * @return the id
 	 */
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -33,7 +48,7 @@ public class ClientDTO {
 	 *
 	 * @param id the new id
 	 */
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -78,7 +93,7 @@ public class ClientDTO {
 	 *
 	 * @return the dob
 	 */
-	public Date getDob() {
+	public LocalDate getDob() {
 		return dob;
 	}
 
@@ -87,7 +102,7 @@ public class ClientDTO {
 	 *
 	 * @param dob the new dob
 	 */
-	public void setDob(Date dob) {
+	public void setDob(LocalDate dob) {
 		this.dob = dob;
 	}
 
