@@ -20,7 +20,7 @@ public class Assembler {
 	 * Instantiates a new assembler.
 	 */
 	private Assembler() {
-
+		// Empty constructor
 	}
 
 	/**
