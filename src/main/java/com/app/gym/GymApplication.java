@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * The Class GYMApplication.
  */
 @SpringBootApplication
-public class GYMApplication {
+public class GymApplication {
 
 	/**
 	 * The main method.
@@ -15,6 +15,6 @@ public class GYMApplication {
 	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
-		SpringApplication.run(GYMApplication.class, args);
+		SpringApplication.run(GymApplication.class, args);
 	}
 }
