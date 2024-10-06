@@ -20,9 +20,6 @@ public class ClientRoutine {
 	@EmbeddedId
 	private ClientRoutinePK id;
 
-	/** The ini. */
-	private LocalDate ini;
-
 	/** The end. */
 	private LocalDate end;
 
@@ -49,14 +46,12 @@ public class ClientRoutine {
 	 * Instantiates a new client routine.
 	 *
 	 * @param id      the id
-	 * @param ini     the ini
 	 * @param end     the end
 	 * @param routine the routine
 	 * @param client  the client
 	 */
-	public ClientRoutine(ClientRoutinePK id, LocalDate ini, LocalDate end, Routine routine, Client client) {
+	public ClientRoutine(ClientRoutinePK id, LocalDate end, Routine routine, Client client) {
 		this.id = id;
-		this.ini = ini;
 		this.end = end;
 		this.routine = routine;
 		this.client = client;
@@ -69,15 +64,6 @@ public class ClientRoutine {
 	 */
 	public ClientRoutinePK getId() {
 		return id;
-	}
-
-	/**
-	 * Gets the ini.
-	 *
-	 * @return the ini
-	 */
-	public LocalDate getIni() {
-		return ini;
 	}
 
 	/**

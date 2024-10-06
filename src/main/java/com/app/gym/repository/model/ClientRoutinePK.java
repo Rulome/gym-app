@@ -1,5 +1,6 @@
 package com.app.gym.repository.model;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 import jakarta.persistence.Embeddable;
@@ -16,6 +17,9 @@ public class ClientRoutinePK {
 	/** The routine id. */
 	private Long routineId;
 
+	/** The ini. */
+	private LocalDate ini;
+
 	/**
 	 * Instantiates a new client routine PK.
 	 */
@@ -23,49 +27,30 @@ public class ClientRoutinePK {
 	}
 
 	/**
-	 * Instantiates a new client routine PK.
+	 * Instantiates a new Client routine pk.
 	 *
+	 * @param ini       the ini
 	 * @param clientId  the client id
 	 * @param routineId the routine id
 	 */
-	public ClientRoutinePK(String clientId, Long routineId) {
+	public ClientRoutinePK(LocalDate ini, String clientId, Long routineId) {
+		this.ini = ini;
 		this.clientId = clientId;
 		this.routineId = routineId;
 	}
 
-	/**
-	 * Gets the client id.
-	 *
-	 * @return the client id
-	 */
-	public String getClientId() {
-		return clientId;
-	}
-
-	/**
-	 * Gets the routine id.
-	 *
-	 * @return the routine id
-	 */
-	public Long getRoutineId() {
-		return routineId;
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		ClientRoutinePK that = (ClientRoutinePK) o;
+		return Objects.equals(clientId, that.clientId) &&
+				Objects.equals(routineId, that.routineId) &&
+				Objects.equals(ini, that.ini);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(clientId, routineId);
+		return Objects.hash(clientId, routineId, ini);
 	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ClientRoutinePK other = (ClientRoutinePK) obj;
-		return Objects.equals(clientId, other.clientId) && Objects.equals(routineId, other.routineId);
-	}
-
 }
