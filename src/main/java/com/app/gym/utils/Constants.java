@@ -6,6 +6,7 @@ package com.app.gym.utils;
 public class Constants {
 
     private Constants() {
+        // Empty constructor
     }
 
     /**
@@ -42,4 +43,25 @@ public class Constants {
      * The constant CODE_003_DESCRIPTION.
      */
     public static final String CODE_003_DESCRIPTION = "The routine does not exist.";
+
+    /**
+     * The constant CODE_004.
+     */
+    public static final String CODE_004 = "004";
+
+    /**
+     * The constant CODE_004_DESCRIPTION.
+     */
+    public static final String CODE_004_DESCRIPTION = "The client already has an active routine. Finish it " +
+            "before assigning a new one.";
+
+    /**
+     * The constant CODE_005.
+     */
+    public static final String CODE_005 = "005";
+
+    /**
+     * The constant CODE_005_DESCRIPTION.
+     */
+    public static final String CODE_005_DESCRIPTION = "The client is already associated with this routine.";
 }
