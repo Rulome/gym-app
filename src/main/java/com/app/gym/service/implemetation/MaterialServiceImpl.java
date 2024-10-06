@@ -29,8 +29,8 @@ public class MaterialServiceImpl implements MaterialService {
 
 	@Override
 	@Transactional
-	public Material save(MaterialDTO material) {
-		return repository.save(Assembler.materialAssembler(material));
+	public void save(MaterialDTO material) {
+		repository.save(Assembler.materialAssembler(material));
 	}
 
 }

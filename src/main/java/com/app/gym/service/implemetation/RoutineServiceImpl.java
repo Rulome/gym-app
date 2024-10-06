@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+import com.app.gym.exceptions.CustomGymException;
+import com.app.gym.utils.Constants;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -50,12 +52,18 @@ public class RoutineServiceImpl implements RoutineService {
 
 	@Override
 	@Transactional
-	public Routine asign(Long routineID, String clientID) {
+	public void asign(Long routineID, String clientID) {
 
 		Optional<Client> client = clientRepository.findById(clientID);
 		Optional<Routine> routine = routineRepository.findById(routineID);
 
-		if (client.isPresent() && routine.isPresent()) {
+		if (client.isEmpty() && routine.isEmpty()){
+			throw new CustomGymException(Constants.CODE_001, Constants.CODE_001_DESCRIPTION);
+		} else if (client.isEmpty()) {
+			throw new CustomGymException(Constants.CODE_002, Constants.CODE_002_DESCRIPTION);
+		} else if (routine.isEmpty()) {
+			throw new CustomGymException(Constants.CODE_003, Constants.CODE_003_DESCRIPTION);
+		} else {
 			Routine r = routine.get();
 			ClientRoutinePK crPK = new ClientRoutinePK(clientID, routineID);
 			ClientRoutine cr = new ClientRoutine(crPK, LocalDate.now(), null, r, client.get());
@@ -63,11 +71,7 @@ public class RoutineServiceImpl implements RoutineService {
 			crSet.add(cr);
 			r.setClients(crSet);
 			routineRepository.save(r);
-			return r;
-
 		}
-		// TODO
-		return null;
 	}
 
 }

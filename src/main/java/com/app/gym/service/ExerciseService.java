@@ -12,8 +12,7 @@ public interface ExerciseService {
 	 * Save.
 	 *
 	 * @param exercise the exercise
-	 * @return the exercise
 	 */
-	Exercise save(ExerciseDTO exercise);
+	void save(ExerciseDTO exercise);
 
 }

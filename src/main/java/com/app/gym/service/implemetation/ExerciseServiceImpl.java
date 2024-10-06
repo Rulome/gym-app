@@ -29,9 +29,9 @@ public class ExerciseServiceImpl implements ExerciseService {
 
 	@Override
 	@Transactional
-	public Exercise save(ExerciseDTO exercise) {
+	public void save(ExerciseDTO exercise) {
 
-		return repository.save(Assembler.exerciseAssembler(exercise));
+		repository.save(Assembler.exerciseAssembler(exercise));
 	}
 
 }

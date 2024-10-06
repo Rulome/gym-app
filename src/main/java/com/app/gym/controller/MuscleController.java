@@ -38,9 +38,11 @@ public class MuscleController {
 	 * @return the response entity
 	 */
 	@PostMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Muscle> createMuscle(@RequestBody MuscleDTO muscle) {
+	public ResponseEntity<Void> createMuscle(@RequestBody MuscleDTO muscle) {
 
-		return new ResponseEntity<>(service.save(muscle), HttpStatus.OK);
+		service.save(muscle);
+
+		return ResponseEntity.ok().build();
 	}
 
 }

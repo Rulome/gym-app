@@ -12,8 +12,7 @@ public interface MuscleService {
 	 * Save.
 	 *
 	 * @param muscle the muscle
-	 * @return the muscle
 	 */
-	Muscle save(MuscleDTO muscle);
+	void save(MuscleDTO muscle);
 
 }

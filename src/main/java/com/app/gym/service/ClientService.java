@@ -12,8 +12,7 @@ public interface ClientService {
 	 * Save.
 	 *
 	 * @param client the client
-	 * @return the client
 	 */
-	Client save(ClientDTO client);
+	void save(ClientDTO client);
 
 }

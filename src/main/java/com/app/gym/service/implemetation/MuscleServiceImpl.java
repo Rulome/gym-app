@@ -29,9 +29,9 @@ public class MuscleServiceImpl implements MuscleService {
 
 	@Override
 	@Transactional
-	public Muscle save(MuscleDTO muscle) {
+	public void save(MuscleDTO muscle) {
 
-		return repository.save(Assembler.muscleAssembler(muscle));
+		repository.save(Assembler.muscleAssembler(muscle));
 	}
 
 }

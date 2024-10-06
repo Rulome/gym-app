@@ -27,17 +27,11 @@ public class ClientServiceImpl implements ClientService {
 		this.repository = repository;
 	}
 
-	/**
-	 * Save.
-	 *
-	 * @param client the client
-	 * @return the client
-	 */
 	@Override
 	@Transactional
-	public Client save(ClientDTO client) {
+	public void save(ClientDTO client) {
 
-		return repository.save(Assembler.clientAssembler(client));
+		repository.save(Assembler.clientAssembler(client));
 	}
 
 }

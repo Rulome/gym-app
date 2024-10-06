@@ -38,9 +38,11 @@ public class ExerciseController {
 	 * @return the response entity
 	 */
 	@PostMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Exercise> createExercise(@RequestBody ExerciseDTO exercise) {
+	public ResponseEntity<Void> createExercise(@RequestBody ExerciseDTO exercise) {
 
-		return new ResponseEntity<>(service.save(exercise), HttpStatus.OK);
+		service.save(exercise);
+
+		return ResponseEntity.ok().build();
 	}
 
 }

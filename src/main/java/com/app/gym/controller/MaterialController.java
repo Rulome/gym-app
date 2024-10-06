@@ -38,9 +38,11 @@ public class MaterialController {
 	 * @return the response entity
 	 */
 	@PostMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Material> createMaterial(@RequestBody MaterialDTO material) {
+	public ResponseEntity<Void> createMaterial(@RequestBody MaterialDTO material) {
 
-		return new ResponseEntity<>(service.save(material), HttpStatus.OK);
+		service.save(material);
+
+		return ResponseEntity.ok().build();
 	}
 
 }

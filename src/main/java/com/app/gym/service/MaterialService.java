@@ -12,8 +12,7 @@ public interface MaterialService {
 	 * Save.
 	 *
 	 * @param material the material
-	 * @return the material
 	 */
-	Material save(MaterialDTO material);
+	void save(MaterialDTO material);
 
 }

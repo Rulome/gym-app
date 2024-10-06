@@ -38,9 +38,11 @@ public class ClientController {
 	 * @return the response entity
 	 */
 	@PostMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Client> createClient(@RequestBody ClientDTO client) {
+	public ResponseEntity<Void> createClient(@RequestBody ClientDTO client) {
 
-		return new ResponseEntity<>(service.save(client), HttpStatus.OK);
+		service.save(client);
+
+		return ResponseEntity.ok().build();
 	}
 
 }

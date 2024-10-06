@@ -21,8 +21,7 @@ public interface RoutineService {
 	 *
 	 * @param routine the routine
 	 * @param client  the client
-	 * @return the routine
 	 */
-	Routine asign(Long routine, String client);
+	void asign(Long routine, String client);
 
 }

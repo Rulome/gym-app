@@ -39,17 +39,26 @@ public class RoutineController {
 	 * @param routine the routine
 	 * @return the response entity
 	 */
-	@PostMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE,
+			consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Routine> createRoutine(@RequestBody RoutineDTO routine) {
 
 		return new ResponseEntity<>(service.save(routine), HttpStatus.OK);
 	}
 
-	@PutMapping(value = "/asign")
-	public ResponseEntity<Routine> asingRoutine(@RequestParam(required = true) Long routine,
-			@RequestParam(required = true) String client) {
+	/**
+	 * Assing routine response entity.
+	 *
+	 * @param routine the routine
+	 * @param client  the client
+	 * @return the response entity
+	 */
+	@PutMapping(value = "/assign")
+	public ResponseEntity<Void> assingRoutine(Long routine, String client) {
 
-		return new ResponseEntity<>(service.asign(routine, client), HttpStatus.OK);
+		service.asign(routine, client);
+
+		return ResponseEntity.ok().build();
 	}
 
 }
