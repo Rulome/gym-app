@@ -54,7 +54,7 @@ public class RoutineController {
 	 * @return the response entity
 	 */
 	@PutMapping(value = "/assign")
-	public ResponseEntity<Void> assingRoutine(Long routine, String client) {
+	public ResponseEntity<Void> assingRoutine(@RequestParam Long routine,@RequestParam  String client) {
 
 		service.asign(routine, client);
 
